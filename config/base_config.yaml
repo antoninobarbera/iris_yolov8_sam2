@@ -1,0 +1,81 @@
+dataset:
+  ubirisv1: "dataset/UBIRISV1.pkl"
+  casiav1: "dataset/CASIA.pkl"
+  casia_v3_interval: "dataset/CASIA_V3_INTERVAL.pkl"
+  casia_v3_lamp: "dataset/CASIA_V3_LAMP.pkl"
+  sessao2_path: "dataset/SESSAO2.pkl"
+  casia3_twins_path: "dataset/CASIA_V3_TWINS.pkl"
+
+checkpoints_sam2: 
+  tiny: "sam2/checkpoints/sam2.1_hiera_tiny.pt"
+  small: "sam2/checkpoints/sam2.1_hiera_small.pt"
+  large: "sam2/checkpoints/sam2.1_hiera_large.pt"
+  plus: "sam2/checkpoints/sam2.1_hiera_base_plus.pt"
+
+config_sam2:
+  tiny: "configs/sam2.1/sam2.1_hiera_t.yaml"
+  small: "configs/sam2.1/sam2.1_hiera_s.yaml"
+  large: "configs/sam2.1/sam2.1_hiera_l.yaml"
+  plus: "configs/sam2.1/sam2.1_hiera_base_plus.yaml"
+
+checkpoints_yolov8:
+  yolov8_model: "yolov8/checkpoints_yolov8/yolov8s_cui.pt"
+
+folders_path:
+  iris_images: "hybrid_iris_recognition/iris_images"
+  original_iris: "hybrid_iris_recognition/iris_images/original_iris"
+  segmented_iris: "hybrid_iris_recognition/iris_images/segmented_iris"
+  normalized_iris: "hybrid_iris_recognition/iris_images/normalized_iris"
+  iris_code: "hybrid_iris_recognition/iris_images/iris_code"
+  keypoints_iris: "hybrid_iris_recognition/iris_images/keypoints_iris"
+  mask_sam2: "hybrid_iris_recognition/iris_images/mask_sam2"
+  mask_iris: "hybrid_iris_recognition/iris_images/mask_sam2/mask_iris"
+  mask_pupil: "hybrid_iris_recognition/iris_images/mask_sam2/mask_pupil"
+  not_detected: "hybrid_iris_recognition/iris_images/not_detected"
+
+dataset_to_use: [casiav1] # Choose: casiav1, ubirisv1, casia_v3_interval, casia_v3_lamp.  Only segmentation mode: casia_v3_twins or ubirisv2
+sam2_type: "small" # Choose one: tiny, small, large or plus
+feature_extractor: [daugman] # Choose one: daugman, resnet101, vit, swin, hybrid, densenet201
+system_mode: [identification] # Choose one: identification or segmentation
+test_thresholds: [8, 16, 24, 36, 40]
+
+equalization:
+  alpha: 0.0
+  beta: 1.0
+  gamma: 0
+
+normalization:
+  x_size: 64 
+  y_size: 512 
+  border: 48  
+
+gabor_filter:
+  x_size: 21
+  y_size: 21
+  gamma: 0.6
+  frequency: 0.5
+  sigma: 0.4
+  psi: 0
+
+feature_reduction_lle:
+  n_neighbors: 215
+  n_components: 215 
+
+matching:
+  lowe_filter: 0.88
+  stdev_r_diff: 0.15
+  stdev_theta_diff: 10
+  threshold: 38
+
+training:
+  nn:
+    want_to_use_cuda: true
+    lower_is_better: true
+    evaluation_metric: 'accuracy'
+    batch_size: 32
+    lr: 0.01
+    num_epochs: 500
+
+graph:
+  save_images: False # Choose one: True or False
+  save_yolo_annotation: False # Choose one: True or False

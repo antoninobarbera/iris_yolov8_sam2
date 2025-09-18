@@ -67,7 +67,7 @@ Executes the complete recognition pipeline, which includes segmentation (YOLOv8 
 
 **Command:**
 ```bash
-python main.py
+python hybrid_iris_recognition/main.py
 ```
 **Output:**
 
@@ -81,7 +81,7 @@ Performs only iris and pupil segmentation.
 
 **Command:**
 ```bash
-python main.py
+python hybrid_iris_recognition/main.py
 ```
 *Note: Ensure that system_mode: [segmentation] is set in the `config.yaml` file.*
 
@@ -93,7 +93,7 @@ python main.py
 Uses extracted features to train Machine Learning classifiers such as SVM, KNN, and Neural Networks (NN).
 
 ```bash
-python models_generation.py
+python hybrid_iris_recognition/models_generation.py
 ```
 **Output:**
 
@@ -106,7 +106,7 @@ python models_generation.py
 Implements a recognition approach based on SIFT keypoints and matching. This method is computationally more intensive than others.
 
 ```bash
-python sift_test.py
+python hybrid_iris_recognition/sift_test.py
 ```
 
 ## Configuration  (config.yaml)

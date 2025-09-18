@@ -44,6 +44,11 @@ To get started, clone the repository and install the necessary dependencies.
         ```bash
         bash prepare.sh
         ```
+    *   Install SAM2 in editable mode (so that your project can import `sam2`):
+        ```bash
+        cd SAM2
+        pip install -e .
+        ```
 
 4.  **Troubleshooting OpenCV issues (if necessary):**
     If you encounter problems with OpenCV, try uninstalling the existing version and reinstalling via `requirements.txt`:

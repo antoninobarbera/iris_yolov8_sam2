@@ -109,6 +109,40 @@ Implements a recognition approach based on SIFT keypoints and matching. This met
 python sift_test.py
 ```
 
+### 5. YOLOv8 Eye Detector Fine-Tuning
+
+To fine-tune the YOLOv8 model for eye detection on your custom dataset, use the `train_yolo_iris.py` script. This script is designed for training (fine-tuning) YOLOv8, not just running the detector.
+
+**Command:**
+```bash
+python train_yolo_iris.py
+```
+
+Make sure your dataset is properly organized and annotated in YOLO format, and that the data path and training parameters are correctly set in the configuration file or within the script.
+
+**Output:**
+* The `runs/detect/` folder containing the fine-tuned weights and training logs.
+* Plots showing the loss trend and validation metrics.
+
+#### iris.yaml file
+
+The `iris.yaml` file is required for YOLOv8 training. It defines the dataset configuration, including the paths to your training and validation images, and the class names (e.g., "eye"). YOLOv8 uses this file to correctly load your data and understand the classes to detect.
+
+**Example of iris.yaml:**
+```yaml
+train: path/to/train/images
+val: path/to/val/images
+
+nc: 1
+names: ['eye']
+```
+- `train`: Path to the folder containing training images and labels.
+- `val`: Path to the folder containing validation images and labels.
+- `nc`: Number of classes (for eye detection, usually 1).
+- `names`: List of class names.
+
+Make sure to update the paths and class names according to your dataset. The presence of `iris.yaml` is essential for the correct functioning of the YOLOv8 fine-tuning process.
+
 ## Configuration  (config.yaml)
 
 The `config.yaml`file allows customization of system parameters. Here is an example of the main parameters:

@@ -6,21 +6,21 @@ import gc
 if __name__ == "__main__":
 
     cuda_available = torch.cuda.is_available()
-    print("CUDA disponibile:", cuda_available)
+    print("CUDA available:", cuda_available)
 
     if cuda_available:
         device_name = torch.cuda.get_device_name(0)
-        print("Nome GPU:", device_name)
-        print("Versione CUDA (PyTorch):", torch.version.cuda)
+        print("GPU name:", device_name)
+        print("CUDA version (PyTorch):", torch.version.cuda)
 
         torch.cuda.empty_cache()
         torch.cuda.ipc_collect()
         gc.collect()
         torch.cuda.empty_cache()
 
-        print("Sto usando la GPU:", device_name)
+        print("Using GPU:", device_name)
     else:
-        print("Sto usando la CPU")
+        print("Using CPU")
     
     model_name = "yolov8s.pt" # yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
 
